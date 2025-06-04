@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
@@ -16,7 +17,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      brightness: Brightness.dark,
       backgroundColor: Colors.black,
       elevation: 0.0,
       centerTitle: true,
@@ -27,7 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: onPressedLeading,
             )
           : null,
-      actions: (profilePicture != null) ? [_buildProfilePicture(profilePicture)] : actions,
+      actions: (profilePicture != null) ? [_buildProfilePicture(profilePicture)] : actions, systemOverlayStyle: SystemUiOverlayStyle.light,
     );
   }
 

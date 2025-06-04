@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 // ignore: must_be_immutable
@@ -17,7 +18,6 @@ class _SearchAppBarState extends State<SearchAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      brightness: Brightness.dark,
       automaticallyImplyLeading: false,
       backgroundColor: Colors.black,
       titleSpacing: 0,
@@ -61,7 +61,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
                 },
                 child: Text('cancel'),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
+                  backgroundColor: Colors.black,
                   textStyle: TextStyle(fontWeight: FontWeight.w400),
                   padding: EdgeInsets.symmetric(horizontal: 20),
                 ),
@@ -70,12 +70,12 @@ class _SearchAppBarState extends State<SearchAppBar> {
                 onPressed: widget.searchPressed,
                 child: Text('Search'),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
+                  backgroundColor: Colors.black,
                   textStyle: TextStyle(fontWeight: FontWeight.w400),
                   padding: EdgeInsets.symmetric(horizontal: 20),
                 ),
               ),
-      ],
+      ], systemOverlayStyle: SystemUiOverlayStyle.light,
     );
   }
 }

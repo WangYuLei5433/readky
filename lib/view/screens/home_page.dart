@@ -130,9 +130,8 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
                         ),
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.transparent,
+                          foregroundColor: Colors.grey, backgroundColor: Colors.transparent,
                           shadowColor: Colors.transparent,
-                          onPrimary: Colors.grey,
                         ),
                       ),
                     ],

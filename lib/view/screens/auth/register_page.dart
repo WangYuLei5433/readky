@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:readky/route/slide_page_route.dart';
 import 'package:readky/view/screens/page_switch.dart';
@@ -15,7 +16,6 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        brightness: Brightness.dark,
         backgroundColor: Colors.black,
         title: SvgPicture.asset('assets/icons/appname.svg'),
         centerTitle: true,
@@ -27,7 +27,7 @@ class _RegisterPageState extends State<RegisterPage> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-        ),
+        ), systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -89,8 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 16),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  onPrimary: Colors.black,
+                  foregroundColor: Colors.black, backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -105,8 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 onPressed: () {},
                 child: Text('Already have an account? Login'),
                 style: TextButton.styleFrom(
-                  primary: Colors.white.withOpacity(0.65),
-                  textStyle: TextStyle(fontWeight: FontWeight.w400),
+                  foregroundColor: Colors.white.withOpacity(0.65), textStyle: TextStyle(fontWeight: FontWeight.w400),
                 ),
               ),
             )
