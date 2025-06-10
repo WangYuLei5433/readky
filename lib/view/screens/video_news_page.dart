@@ -12,7 +12,7 @@ class VideoNewsPage extends StatefulWidget {
 
 class _VideoNewsPageState extends State<VideoNewsPage> with TickerProviderStateMixin {
   List<VideoNews> videoNews = VideoNewsHelper.videoNews;
-  TabController _categoryTabController;
+  late TabController _categoryTabController;
 
   @override
   void initState() {

@@ -11,7 +11,7 @@ class PageSwitchWithAnimation extends StatefulWidget {
 
 class _PageSwitchWithAnimationState extends State<PageSwitchWithAnimation> {
   int _selectedIndex = 0;
-  PageController _pageSwitchController;
+  late PageController _pageSwitchController;
 
   @override
   void initState() {

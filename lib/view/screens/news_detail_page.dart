@@ -5,7 +5,7 @@ import 'package:readky/view/widgets/custom_app_bar.dart';
 
 class NewsDetailPage extends StatelessWidget {
   final News data;
-  NewsDetailPage({@required this.data});
+  NewsDetailPage({required this.data});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +44,8 @@ class NewsDetailPage extends StatelessWidget {
             height: 240,
             decoration: BoxDecoration(
               color: Colors.grey,
-              image: DecorationImage(
-                image: AssetImage(data.photo),
+              image:DecorationImage(
+                image: AssetImage(data.photo ?? ' '),
                 fit: BoxFit.cover,
               ),
             ),
@@ -64,12 +64,12 @@ class NewsDetailPage extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(top: 12, bottom: 20),
                   child: Text(
-                    data.title,
+                    data.title ?? '',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, height: 150 / 100, fontFamily: 'inter'),
                   ),
                 ),
                 Text(
-                  data.description,
+                  data.description ?? '',
                   style: TextStyle(color: Colors.black.withOpacity(0.8), fontSize: 14, height: 150 / 100, fontWeight: FontWeight.w500),
                 ),
               ],

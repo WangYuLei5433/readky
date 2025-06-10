@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Widget title;
-  final Widget leadingIcon;
-  final Function onPressedLeading;
-  final List<Widget> actions;
-  final Widget profilePicture;
-  final Function onPressedProfilePicture;
+  final Widget? title;
+  final Widget? leadingIcon;
+  final void Function()? onPressedLeading;
+  final List<Widget>? actions;
+  final Widget? profilePicture;
+  final void Function()? onPressedProfilePicture;
 
   CustomAppBar({this.title, this.leadingIcon, this.onPressedLeading, this.actions, this.profilePicture, this.onPressedProfilePicture});
 
@@ -23,11 +23,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title,
       leading: (leadingIcon != null)
           ? IconButton(
-              icon: leadingIcon,
+              icon: leadingIcon!,
               onPressed: onPressedLeading,
             )
           : null,
-      actions: (profilePicture != null) ? [_buildProfilePicture(profilePicture)] : actions, systemOverlayStyle: SystemUiOverlayStyle.light,
+      actions: (profilePicture != null) ? [_buildProfilePicture(profilePicture!)] : actions, systemOverlayStyle: SystemUiOverlayStyle.light,
     );
   }
 

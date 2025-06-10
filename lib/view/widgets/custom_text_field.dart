@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
-  final TextEditingController controller;
-  final Function onChanged;
-  final String hintText;
-  final String labelText;
+  final TextEditingController? controller;
+  final void Function(String)? onChanged;
+  final String? hintText;
+  final String? labelText;
   final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry margin;
   final bool obsecureText;

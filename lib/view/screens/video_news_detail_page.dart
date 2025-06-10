@@ -7,20 +7,20 @@ import 'package:video_player/video_player.dart';
 
 class VideoNewsDetailPage extends StatefulWidget {
   final VideoNews data;
-  VideoNewsDetailPage({@required this.data});
+  VideoNewsDetailPage({required this.data});
   @override
   _VideoNewsDetailPageState createState() => _VideoNewsDetailPageState();
 }
 
 class _VideoNewsDetailPageState extends State<VideoNewsDetailPage> {
-  VideoPlayerController _videoPlayerController;
-  ChewieController _chewieController;
+  late VideoPlayerController _videoPlayerController;
+  late ChewieController _chewieController;
 
   @override
   void initState() {
     super.initState();
     print(widget.data);
-    _videoPlayerController = VideoPlayerController.network(widget.data.video);
+    _videoPlayerController = VideoPlayerController.network(widget.data.video ?? '');
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
       aspectRatio: 5 / 8,

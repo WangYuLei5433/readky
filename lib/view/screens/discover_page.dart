@@ -18,7 +18,7 @@ class DiscoverPage extends StatefulWidget {
 
 class _DiscoverPageState extends State<DiscoverPage> with TickerProviderStateMixin {
   ScrollController _featuredVideoNewsCardScrollController = ScrollController();
-  TabController _categoryTabController;
+  late TabController _categoryTabController;
   List<VideoNews> featuredVideoNews = VideoNewsHelper.featuredVideoNews;
   List<News> allCategoriesNews = NewsHelper.allCategoriesNews;
 

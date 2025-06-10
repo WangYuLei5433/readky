@@ -5,8 +5,8 @@ import 'package:readky/view/utils/app_theme.dart';
 // ignore: must_be_immutable
 class CustomBottomNavigationBar extends StatefulWidget {
   int selectedIndex;
-  Function onItemTapped;
-  CustomBottomNavigationBar({@required this.selectedIndex, @required this.onItemTapped});
+  void Function(int) onItemTapped;
+  CustomBottomNavigationBar({required this.selectedIndex, required this.onItemTapped});
 
   @override
   _CustomBottomNavigationBarState createState() => _CustomBottomNavigationBarState();

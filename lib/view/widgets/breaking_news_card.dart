@@ -5,7 +5,7 @@ import 'package:readky/view/screens/news_detail_page.dart';
 
 class BreakingNewsCard extends StatelessWidget {
   final News data;
-  BreakingNewsCard({this.data});
+  BreakingNewsCard({required this.data});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,14 +21,14 @@ class BreakingNewsCard extends StatelessWidget {
             Container(
               height: 120,
               width: 200,
-              decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10), image: DecorationImage(image: AssetImage(data.photo), fit: BoxFit.cover)),
+              decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10), image: DecorationImage(image: AssetImage(data.photo ?? ' '), fit: BoxFit.cover)),
             ),
             Expanded(
               child: Container(
                 margin: EdgeInsets.only(top: 12),
                 padding: EdgeInsets.only(left: 4),
                 child: Text(
-                  data.title,
+                  data.title ?? '',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     height: 150 / 100,

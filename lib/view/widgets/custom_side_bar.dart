@@ -97,7 +97,7 @@ class _CustomSideBarState extends State<CustomSideBar> {
     );
   }
 
-  Widget _buildListTile(BuildContext context, {@required String title, @required String iconAssetPath, @required Function onTap}) {
+  Widget _buildListTile(BuildContext context, {required String title, required String iconAssetPath, required VoidCallback onTap}) {
     return Container(
       color: Colors.black,
       child: ListTileTheme(

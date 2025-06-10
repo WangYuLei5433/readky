@@ -16,7 +16,7 @@ class BookmarkPage extends StatefulWidget {
 }
 
 class _BookmarkPageState extends State<BookmarkPage> with TickerProviderStateMixin {
-  TabController _bookmarkTabController;
+  late TabController _bookmarkTabController;
   List<News> news = NewsHelper.bookmarkedNews;
 
   List<VideoNews> videoNews = VideoNewsHelper.bookmarkedVideoNews;

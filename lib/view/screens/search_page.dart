@@ -53,11 +53,11 @@ class _SearchPageState extends State<SearchPage> {
                     child: OutlinedButton(
                       onPressed: () {
                         setState(() {
-                          searchInputController.text = category[index].name;
+                          searchInputController.text = category[index].name ?? '';
                         });
                       },
                       child: Text(
-                        category[index].name,
+                        category[index].name ?? '',
                         style: TextStyle(color: Colors.white.withOpacity(0.7), fontWeight: FontWeight.w400),
                       ),
                       style: OutlinedButton.styleFrom(

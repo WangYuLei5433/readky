@@ -150,7 +150,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Container _buildMenuTitle(BuildContext context, {@required String title}) {
+  Container _buildMenuTitle(BuildContext context, {required String title}) {
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -162,7 +162,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuTile(BuildContext context, {@required String title, @required String desciption, Function onTap, Widget icon}) {
+  Widget _buildMenuTile(BuildContext context, {required String title, required String desciption, void Function()? onTap, Widget? icon}) {
     return InkWell(
       onTap: onTap,
       child: Container(

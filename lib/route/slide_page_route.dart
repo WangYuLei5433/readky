@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class SlidePageRoute extends PageRouteBuilder {
   final Widget child;
   final AxisDirection direction;
-  SlidePageRoute({@required this.child, this.direction = AxisDirection.left})
+  SlidePageRoute({required this.child, this.direction = AxisDirection.left})
       : super(
           transitionDuration: Duration(milliseconds: 400),
           reverseTransitionDuration: Duration(milliseconds: 300),
