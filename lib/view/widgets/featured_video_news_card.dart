@@ -7,7 +7,7 @@ import 'package:readky/view/widgets/tag_card.dart';
 
 class FeaturedVideoNewsCard extends StatelessWidget {
   final VideoNews data;
-  FeaturedVideoNewsCard({@required this.data});
+  FeaturedVideoNewsCard({required this.data});
   @override
   Widget build(BuildContext context) {
     return (data.title != 'View More')
@@ -17,7 +17,7 @@ class FeaturedVideoNewsCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               color: Colors.grey,
-              image: DecorationImage(fit: BoxFit.cover, image: AssetImage(data.thumbnail)),
+              image: DecorationImage(fit: BoxFit.cover, image: AssetImage(data.thumbnail ?? ' ')),
             ),
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
@@ -34,7 +34,7 @@ class FeaturedVideoNewsCard extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(top: 10),
                     child: Text(
-                      data.title,
+                      data.title ?? '',
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

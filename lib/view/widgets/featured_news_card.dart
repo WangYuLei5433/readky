@@ -7,7 +7,7 @@ import 'package:readky/view/widgets/tag_card.dart';
 
 class FeaturedNewsCard extends StatelessWidget {
   final News data;
-  FeaturedNewsCard({this.data});
+  FeaturedNewsCard({required this.data});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,7 +21,7 @@ class FeaturedNewsCard extends StatelessWidget {
           color: Colors.grey,
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
-            image: AssetImage(data.photo),
+            image: AssetImage(data.photo ?? 'assets/default_image.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -43,7 +43,7 @@ class FeaturedNewsCard extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(top: 14, bottom: 12),
                     child: Text(
-                      data.title,
+                      data.title ?? 'Untitled',
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

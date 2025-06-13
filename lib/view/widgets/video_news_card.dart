@@ -7,7 +7,7 @@ class VideoNewsCard extends StatelessWidget {
   static final double itemHeight = 400;
   static final double itemWidth = 300;
   final VideoNews data;
-  VideoNewsCard({@required this.data});
+  VideoNewsCard({required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class VideoNewsCard extends StatelessWidget {
       width: itemWidth,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(image: AssetImage(data.thumbnail), fit: BoxFit.cover),
+        image: DecorationImage(image: AssetImage(data.thumbnail ?? ' '), fit: BoxFit.cover),
         color: Colors.black,
       ),
       child: Container(
@@ -32,7 +32,7 @@ class VideoNewsCard extends StatelessWidget {
             TagCard(tagName: 'Video'),
             SizedBox(height: 8),
             Text(
-              data.title,
+              data.title ?? 'Untitled',
               style: TextStyle(color: Colors.white, fontFamily: 'inter', fontSize: 16, height: 150 / 100),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,

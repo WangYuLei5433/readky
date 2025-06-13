@@ -7,8 +7,8 @@ class SwitchableButton extends StatefulWidget {
   bool activeLeft;
   Color buttonColor;
   Color backgroundColor;
-  Function onTapLeft;
-  Function onTapRight;
+  Function()? onTapLeft;
+  Function()? onTapRight;
 
   SwitchableButton(
       {this.textColor = Colors.white,
@@ -57,7 +57,7 @@ class _SwitchableButtonState extends State<SwitchableButton> {
                   setState(() {
                     widget.activeLeft = true;
                   });
-                  widget.onTapLeft();
+                  widget.onTapLeft?.call();
                 },
                 child: Container(
                   height: 70,
@@ -79,7 +79,7 @@ class _SwitchableButtonState extends State<SwitchableButton> {
                   setState(() {
                     widget.activeLeft = false;
                   });
-                  widget.onTapRight();
+                  widget.onTapRight?.call();
                 },
                 child: Container(
                   height: 70,

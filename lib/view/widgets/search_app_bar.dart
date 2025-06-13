@@ -5,8 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 // ignore: must_be_immutable
 class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
   TextEditingController searchInputController;
-  Function searchPressed;
-  SearchAppBar({@required this.searchInputController, this.searchPressed});
+  void Function() searchPressed;
+  SearchAppBar({required this.searchInputController,required this.searchPressed});
   @override
   Size get preferredSize => const Size.fromHeight(60);
 

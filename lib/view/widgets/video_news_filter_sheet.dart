@@ -12,7 +12,7 @@ class VideoNewsFilterSheet extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width,
             height: 50,
-            decoration: BoxDecoration(color: Colors.grey[200], border: Border(bottom: BorderSide(color: Colors.grey[350], width: 1))),
+            decoration: BoxDecoration(color: Colors.grey[200], border: Border(bottom: BorderSide(color: const Color.fromARGB(255, 220, 219, 219), width: 1))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -77,11 +77,11 @@ class VideoNewsFilterSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildFilterOptionTile({@required String title, bool selected = false, Function onTap}) {
+  Widget _buildFilterOptionTile({required String title, bool selected = false, void Function()? onTap}) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        decoration: BoxDecoration(color: Colors.white, border: Border(bottom: BorderSide(color: Colors.grey[300], width: 1))),
+        decoration: BoxDecoration(color: Colors.white, border: Border(bottom: BorderSide(color: const Color.fromARGB(255, 227, 227, 227), width: 1))),
         child: ListTile(
           contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
           selected: selected,

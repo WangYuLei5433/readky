@@ -4,7 +4,7 @@ class ProfileInfoCard extends StatelessWidget {
   final String username;
   final String subscriptionStatus;
 
-  ProfileInfoCard({@required this.username, @required this.subscriptionStatus});
+  ProfileInfoCard({required this.username, required this.subscriptionStatus});
   @override
   Widget build(BuildContext context) {
     return Container(
