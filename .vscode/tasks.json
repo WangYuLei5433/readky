@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Android start",
+      "type": "shell",
+      "command": "bash",
+      "args": ["${workspaceFolder}/scripts/start_emulator.sh"],
+      "isBackground": false,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      }
+    }
+  ]
+}
