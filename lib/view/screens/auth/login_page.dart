@@ -95,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {},
                 child: Text('Forgot your password?'),
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.white.withOpacity(0.65), textStyle: TextStyle(fontWeight: FontWeight.w400),
+                  foregroundColor: Colors.white.withValues(alpha: (0.65 * 255)), textStyle: TextStyle(fontWeight: FontWeight.w400),
                 ),
               ),
             ),

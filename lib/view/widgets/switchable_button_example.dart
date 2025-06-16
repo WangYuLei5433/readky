@@ -30,7 +30,7 @@ class _SwitchableButtonExampleState extends State<SwitchableButtonExample> {
                   duration: Duration(seconds: 1),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.white.withOpacity(0.10),
+                    color: Colors.white.withValues(alpha:(0.10)),
                   ),
                   width: MediaQuery.of(context).size.width,
                   child: Container(
@@ -54,7 +54,7 @@ class _SwitchableButtonExampleState extends State<SwitchableButtonExample> {
                       child: Container(
                         height: 70,
                         width: MediaQuery.of(context).size.width / 2 - 30,
-                        color: Colors.black.withOpacity(0),
+                        color: Colors.black.withValues(alpha:(0)),
                         alignment: Alignment.center,
                         child: AnimatedDefaultTextStyle(
                           style: TextStyle(color: (activeLeft == true) ? textColorActive : textColor),
@@ -76,7 +76,7 @@ class _SwitchableButtonExampleState extends State<SwitchableButtonExample> {
                       child: Container(
                         height: 70,
                         width: MediaQuery.of(context).size.width / 2 - 30,
-                        color: Colors.black.withOpacity(0),
+                        color: Colors.black.withValues(alpha: (0)),
                         alignment: Alignment.center,
                         child: AnimatedDefaultTextStyle(
                           duration: Duration(seconds: 1),

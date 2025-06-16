@@ -90,7 +90,7 @@ class _VideoNewsPageState extends State<VideoNewsPage> with TickerProviderStateM
               labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, fontFamily: 'inter'),
               labelColor: Colors.black,
               unselectedLabelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, fontFamily: 'inter'),
-              unselectedLabelColor: Colors.black.withOpacity(0.6),
+              unselectedLabelColor: Colors.black.withValues(alpha: (0.6)),
               indicatorColor: Colors.transparent,
               onTap: _changeTab,
               tabs: [

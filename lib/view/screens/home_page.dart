@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
       appBar: CustomAppBar(
         leadingIcon: SvgPicture.asset(
           'assets/icons/Menu.svg',
-          color: Colors.white,
+          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
         ),
         onPressedLeading: () {
           Scaffold.of(context).openDrawer();
@@ -84,15 +84,15 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         'Featured news',
-                        style: TextStyle(color: Colors.white.withOpacity(0.6)),
+                        style: TextStyle(color: Colors.white.withValues(alpha: (0.6))),
                       ),
                       ScrollIndicator(
                         scrollController: _featuredNewsScrollController,
                         height: 6,
                         width: 30,
                         indicatorWidth: 20,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white.withOpacity(0.3)),
-                        indicatorDecoration: BoxDecoration(color: Colors.white.withOpacity(0.2), borderRadius: BorderRadius.circular(10)),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white.withValues(alpha: (0.3))),
+                        indicatorDecoration: BoxDecoration(color: Colors.white.withValues(alpha: (0.2)), borderRadius: BorderRadius.circular(10)),
                       ),
                     ],
                   ),

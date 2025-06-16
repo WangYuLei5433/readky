@@ -40,7 +40,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         decoration: InputDecoration(
           focusedBorder: InputBorder.none,
           hintText: widget.hintText,
-          hintStyle: TextStyle(color: Colors.white.withOpacity(0.5), height: 0, fontSize: 16),
+          hintStyle: TextStyle(color: Colors.white.withValues(alpha: (0.5)), height: 0, fontSize: 16),
           labelText: widget.labelText,
           labelStyle: TextStyle(color: Colors.grey, height: 0, fontSize: 14, fontFamily: 'inter'),
           floatingLabelBehavior: FloatingLabelBehavior.always,

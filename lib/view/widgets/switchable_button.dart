@@ -62,7 +62,7 @@ class _SwitchableButtonState extends State<SwitchableButton> {
                 child: Container(
                   height: 70,
                   width: MediaQuery.of(context).size.width / 2 - 30,
-                  color: Colors.black.withOpacity(0),
+                  color: Colors.black.withValues(alpha:(0)),
                   alignment: Alignment.center,
                   child: AnimatedDefaultTextStyle(
                     style: TextStyle(color: (widget.activeLeft == true) ? widget.textColorActive : widget.textColor),
@@ -84,7 +84,7 @@ class _SwitchableButtonState extends State<SwitchableButton> {
                 child: Container(
                   height: 70,
                   width: MediaQuery.of(context).size.width / 2 - 30,
-                  color: Colors.black.withOpacity(0),
+                  color: Colors.black.withValues(alpha:(0)),
                   alignment: Alignment.center,
                   child: AnimatedDefaultTextStyle(
                     duration: Duration(seconds: 1),

@@ -59,7 +59,7 @@ class FeaturedVideoNewsCard extends StatelessWidget {
               width: 140,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.white.withValues(alpha: (0.1)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +75,7 @@ class FeaturedVideoNewsCard extends StatelessWidget {
                   Text(
                     'More Video',
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white.withValues(alpha: (0.5)),
                       fontSize: 12,
                       fontFamily: 'inter',
                       fontWeight: FontWeight.w500,

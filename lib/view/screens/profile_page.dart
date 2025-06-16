@@ -101,7 +101,7 @@ class ProfilePage extends StatelessWidget {
                   desciption: 'Edit and view profile info.',
                   icon: SvgPicture.asset(
                     'assets/icons/Profile.svg',
-                    color: Colors.black,
+                    colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
                   ),
                 ),
                 _buildMenuTile(
@@ -110,7 +110,7 @@ class ProfilePage extends StatelessWidget {
                   desciption: 'Customize your subscription.',
                   icon: SvgPicture.asset(
                     'assets/icons/Ticket Star.svg',
-                    color: Colors.black,
+                    colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
                   ),
                 ),
                 // Menu title - Account Settings
@@ -121,7 +121,7 @@ class ProfilePage extends StatelessWidget {
                   desciption: 'Edit and view profile info.',
                   icon: SvgPicture.asset(
                     'assets/icons/Notification.svg',
-                    color: Colors.black,
+                    colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
                   ),
                 ),
                 _buildMenuTile(
@@ -130,7 +130,7 @@ class ProfilePage extends StatelessWidget {
                   desciption: 'Customize your subscription.',
                   icon: SvgPicture.asset(
                     'assets/icons/Time Circle.svg',
-                    color: Colors.black,
+                    colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
                   ),
                 ),
                 _buildMenuTile(

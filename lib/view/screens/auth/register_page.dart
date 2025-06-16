@@ -104,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 onPressed: () {},
                 child: Text('Already have an account? Login'),
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.white.withOpacity(0.65), textStyle: TextStyle(fontWeight: FontWeight.w400),
+                  foregroundColor: Colors.white.withValues(alpha: (0.65)), textStyle: TextStyle(fontWeight: FontWeight.w400),
                 ),
               ),
             )

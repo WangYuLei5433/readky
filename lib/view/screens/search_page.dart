@@ -58,7 +58,7 @@ class _SearchPageState extends State<SearchPage> {
                       },
                       child: Text(
                         category[index].name ?? '',
-                        style: TextStyle(color: Colors.white.withOpacity(0.7), fontWeight: FontWeight.w400),
+                        style: TextStyle(color: Colors.white.withValues(alpha: (0.7)), fontWeight: FontWeight.w400),
                       ),
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(color: Color(0xFF313131), width: 1),

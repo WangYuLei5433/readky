@@ -34,7 +34,7 @@ class _BookmarkPageState extends State<BookmarkPage> with TickerProviderStateMix
       appBar: CustomAppBar(
         leadingIcon: SvgPicture.asset(
           'assets/icons/Menu.svg',
-          color: Colors.white,
+          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
         ),
         onPressedLeading: () {
           Scaffold.of(context).openDrawer();
@@ -53,7 +53,7 @@ class _BookmarkPageState extends State<BookmarkPage> with TickerProviderStateMix
             },
             icon: SvgPicture.asset(
               'assets/icons/Search.svg',
-              color: Colors.white,
+              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
             ),
           ),
         ],

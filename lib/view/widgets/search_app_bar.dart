@@ -25,7 +25,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
         margin: EdgeInsets.only(left: 16, right: 10),
         height: 40,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.2),
+          color: Colors.white.withValues(alpha:(0.2)),
           borderRadius: BorderRadius.circular(5),
         ),
         child: TextField(
@@ -41,12 +41,12 @@ class _SearchAppBarState extends State<SearchAppBar> {
               visible: (widget.searchInputController.text.isEmpty) ? true : false,
               child: Container(
                 margin: EdgeInsets.only(left: 10, right: 12),
-                child: SvgPicture.asset('assets/icons/Search.svg', color: Colors.white),
+                child: SvgPicture.asset('assets/icons/Search.svg', colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn)),
               ),
             ),
             prefixIconConstraints: BoxConstraints(maxHeight: 20),
             hintText: 'Search...',
-            hintStyle: TextStyle(color: Colors.white.withOpacity(0.2)),
+            hintStyle: TextStyle(color: Colors.white.withValues(alpha:(0.2))),
             contentPadding: EdgeInsets.only(left: 16, bottom: 9),
             focusColor: Colors.white,
           ),

@@ -23,7 +23,7 @@ class NewsDetailPage extends StatelessWidget {
             onPressed: () {},
             icon: Icon(
               Icons.share_outlined,
-              color: Colors.white.withOpacity(0.5),
+              color: Colors.white.withValues(alpha: (0.5)),
             ),
           ),
           IconButton(
@@ -59,7 +59,7 @@ class NewsDetailPage extends StatelessWidget {
               children: [
                 Text(
                   '${data.date} | ${data.author}.',
-                  style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 12),
+                  style: TextStyle(color: Colors.black.withValues(alpha: (0.6)), fontSize: 12),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 12, bottom: 20),
@@ -70,7 +70,7 @@ class NewsDetailPage extends StatelessWidget {
                 ),
                 Text(
                   data.description ?? '',
-                  style: TextStyle(color: Colors.black.withOpacity(0.8), fontSize: 14, height: 150 / 100, fontWeight: FontWeight.w500),
+                  style: TextStyle(color: Colors.black.withValues(alpha: (0.8)), fontSize: 14, height: 150 / 100, fontWeight: FontWeight.w500),
                 ),
               ],
             ),

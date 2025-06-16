@@ -19,7 +19,7 @@ class _WelcomePageState extends State<WelcomePage> {
         padding: EdgeInsets.symmetric(vertical: 30),
         width: MediaQuery.of(context).size.width,
         child: SwitchableButton(
-          backgroundColor: Colors.white.withOpacity(0.1),
+          backgroundColor: Colors.white.withValues(alpha: (0.1)),
           onTapLeft: () {
             Navigator.of(context).push(SlidePageRoute(child: RegisterPage()));
           },

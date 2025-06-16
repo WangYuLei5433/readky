@@ -65,7 +65,7 @@ class _VideoNewsDetailPageState extends State<VideoNewsDetailPage> {
             onPressed: () {},
             icon: Icon(
               Icons.share_outlined,
-              color: Colors.white.withOpacity(0.5),
+              color: Colors.white.withValues(alpha: (0.5)),
             ),
           ),
         ],

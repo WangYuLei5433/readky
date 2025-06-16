@@ -54,7 +54,7 @@ class _CustomSideBarState extends State<CustomSideBar> {
                           ),
                           Text(
                             'Basic Account.',
-                            style: TextStyle(color: Colors.white.withOpacity(0.35)),
+                            style: TextStyle(color: Colors.white.withValues(alpha: (0.35))),
                           )
                         ],
                       ),
@@ -103,10 +103,10 @@ class _CustomSideBarState extends State<CustomSideBar> {
       child: ListTileTheme(
         contentPadding: EdgeInsets.only(left: 24, top: 10, bottom: 10),
         minLeadingWidth: 12,
-        tileColor: Colors.white.withOpacity(0.8),
+        tileColor: Colors.white.withValues(alpha: (0.8)),
         selectedTileColor: Colors.white,
         selectedColor: Colors.white,
-        textColor: Colors.white.withOpacity(0.8),
+        textColor: Colors.white.withValues(alpha: (0.8)),
         child: ListTile(
           leading: SvgPicture.asset(
             iconAssetPath,
