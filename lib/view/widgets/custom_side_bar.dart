@@ -112,7 +112,7 @@ class _CustomSideBarState extends State<CustomSideBar> {
             iconAssetPath,
             height: 24,
             width: 24,
-            color: Colors.white,
+            colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
           ),
           title: Text(
             title,

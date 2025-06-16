@@ -20,7 +20,7 @@ class _VideoNewsDetailPageState extends State<VideoNewsDetailPage> {
   void initState() {
     super.initState();
     print(widget.data);
-    _videoPlayerController = VideoPlayerController.network(widget.data.video ?? '');
+    _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(widget.data.video ?? ''),);
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
       aspectRatio: 5 / 8,

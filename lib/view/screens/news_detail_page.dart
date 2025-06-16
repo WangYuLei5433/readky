@@ -23,14 +23,17 @@ class NewsDetailPage extends StatelessWidget {
             onPressed: () {},
             icon: Icon(
               Icons.share_outlined,
-              color: Colors.white.withValues(alpha: (0.5)),
+              color: Colors.white.withValues(alpha: (0.5* 255)),
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
               'assets/icons/Bookmark.svg',
-              color: Colors.white.withOpacity(0.5),
+              colorFilter:ColorFilter.mode(
+                Colors.white.withValues(alpha: 0.5* 255),
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ],

@@ -139,7 +139,7 @@ class ProfilePage extends StatelessWidget {
                   desciption: 'Customize your subscription.',
                   icon: SvgPicture.asset(
                     'assets/icons/Setting.svg',
-                    color: Colors.black,
+                      colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
                   ),
                 ),
               ],
