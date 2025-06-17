@@ -14,9 +14,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 23,96,173),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 23,96,173),
         title: SvgPicture.asset('assets/icons/appname.svg'),
         centerTitle: true,
         leading: IconButton(

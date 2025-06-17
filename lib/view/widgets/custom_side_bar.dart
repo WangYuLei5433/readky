@@ -13,7 +13,7 @@ class _CustomSideBarState extends State<CustomSideBar> {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Colors.black,
+        color: Color.fromARGB(255, 34, 102, 176),
         child: ListView(
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),
@@ -99,7 +99,7 @@ class _CustomSideBarState extends State<CustomSideBar> {
 
   Widget _buildListTile(BuildContext context, {required String title, required String iconAssetPath, required VoidCallback onTap}) {
     return Container(
-      color: Colors.black,
+      color: Color.fromARGB(255, 52, 116, 183),
       child: ListTileTheme(
         contentPadding: EdgeInsets.only(left: 24, top: 10, bottom: 10),
         minLeadingWidth: 12,

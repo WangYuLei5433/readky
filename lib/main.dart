@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:readky/view/screens/auth/login_page.dart';
+import 'package:readky/view/screens/home_page.dart';
 import 'package:readky/view/screens/welcome_page.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.black,
-    systemNavigationBarColor: Colors.black,
-    systemNavigationBarIconBrightness: Brightness.dark,
+    statusBarColor: const Color.fromARGB(255, 62, 146, 236),
+    systemNavigationBarColor: Colors.white,
+    systemNavigationBarIconBrightness: Brightness.light,
   ));
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'open sans',
       ),
-      home: WelcomePage(),
+      home: LoginPage(),
     );
   }
 }

@@ -7,7 +7,6 @@ import 'package:readky/view/screens/breaking_news_page.dart';
 import 'package:readky/view/screens/profile_page.dart';
 import 'package:readky/view/widgets/breaking_news_card.dart';
 import 'package:readky/view/widgets/custom_app_bar.dart';
-import 'package:readky/view/widgets/featured_news_card.dart';
 import 'package:readky/view/widgets/news_tile.dart';
 import 'package:scroll_indicator/scroll_indicator.dart';
 
@@ -17,8 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  ScrollController _featuredNewsScrollController = ScrollController();
-  List<News> featuredNewsData = NewsHelper.featuredNews;
   List<News> breakingNewsData = NewsHelper.breakingNews;
   List<News> recomendationNewsData = NewsHelper.recomendationNews;
 
@@ -47,59 +44,6 @@ class _HomePageState extends State<HomePage> {
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         children: [
-          // section 1 - Featured News
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 16),
-            width: MediaQuery.of(context).size.width,
-            height: 390,
-            color: Colors.black,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 320,
-                  child: ListView.separated(
-                    physics: BouncingScrollPhysics(),
-                    controller: _featuredNewsScrollController,
-                    padding: EdgeInsets.only(left: 16),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: featuredNewsData.length,
-                    separatorBuilder: (context, index) {
-                      return SizedBox(width: 16);
-                    },
-                    itemBuilder: (context, index) {
-                      return FeaturedNewsCard(
-                        data: featuredNewsData[index],
-                      );
-                    },
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 16),
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Featured news',
-                        style: TextStyle(color: Colors.white.withValues(alpha: (0.6))),
-                      ),
-                      ScrollIndicator(
-                        scrollController: _featuredNewsScrollController,
-                        height: 6,
-                        width: 30,
-                        indicatorWidth: 20,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white.withValues(alpha: (0.3))),
-                        indicatorDecoration: BoxDecoration(color: Colors.white.withValues(alpha: (0.2)), borderRadius: BorderRadius.circular(10)),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
           // section 2 - Breaking News
           Container(
             padding: EdgeInsets.symmetric(vertical: 16),
@@ -172,8 +116,12 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   margin: EdgeInsets.only(top: 8),
                   child: Text(
-                    'Based on your reading history...',
-                    style: TextStyle(color: Colors.grey),
+                    'Recent News',
+                    style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'inter',
+                        ),
                   ),
                 ),
                 Container(
