@@ -16,7 +16,8 @@ class DiscoverPage extends StatefulWidget {
   _DiscoverPageState createState() => _DiscoverPageState();
 }
 
-class _DiscoverPageState extends State<DiscoverPage> with TickerProviderStateMixin {
+class _DiscoverPageState extends State<DiscoverPage>
+    with TickerProviderStateMixin {
   ScrollController _featuredVideoNewsCardScrollController = ScrollController();
   late TabController _categoryTabController;
   List<VideoNews> featuredVideoNews = VideoNewsHelper.featuredVideoNews;
@@ -54,14 +55,13 @@ class _DiscoverPageState extends State<DiscoverPage> with TickerProviderStateMix
         title: Text(
           'Discover',
           style: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 16,
-          ),
+              fontWeight: FontWeight.w400, fontSize: 16, color: Colors.white),
         ),
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(SlidePageRoute(child: SearchPage(), direction: AxisDirection.up));
+              Navigator.of(context).push(SlidePageRoute(
+                  child: SearchPage(), direction: AxisDirection.up));
             },
             icon: SvgPicture.asset(
               'assets/icons/Search.svg',
@@ -117,12 +117,17 @@ class _DiscoverPageState extends State<DiscoverPage> with TickerProviderStateMix
                         ),
                       ),
                       ScrollIndicator(
-                        scrollController: _featuredVideoNewsCardScrollController,
+                        scrollController:
+                            _featuredVideoNewsCardScrollController,
                         height: 6,
                         width: 30,
                         indicatorWidth: 20,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white.withValues(alpha: (0.3))),
-                        indicatorDecoration: BoxDecoration(color: Colors.white.withValues(alpha: (0.2)), borderRadius: BorderRadius.circular(10)),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white.withValues(alpha: (0.3))),
+                        indicatorDecoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: (0.2)),
+                            borderRadius: BorderRadius.circular(10)),
                       ),
                     ],
                   ),
@@ -144,9 +149,15 @@ class _DiscoverPageState extends State<DiscoverPage> with TickerProviderStateMix
                   child: TabBar(
                     isScrollable: true,
                     controller: _categoryTabController,
-                    labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, fontFamily: 'inter'),
+                    labelStyle: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'inter'),
                     labelColor: Colors.black,
-                    unselectedLabelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, fontFamily: 'inter'),
+                    unselectedLabelStyle: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'inter'),
                     unselectedLabelColor: Colors.black.withValues(alpha: (0.6)),
                     indicatorColor: Colors.transparent,
                     onTap: _changeTab,
@@ -195,22 +206,34 @@ class _DiscoverPageState extends State<DiscoverPage> with TickerProviderStateMix
                       ),
                     ),
                     SizedBox(
-                      child: Center(child: Text('category page ${_categoryTabController.index}')),
+                      child: Center(
+                          child: Text(
+                              'category page ${_categoryTabController.index}')),
                     ),
                     SizedBox(
-                      child: Center(child: Text('category page ${_categoryTabController.index}')),
+                      child: Center(
+                          child: Text(
+                              'category page ${_categoryTabController.index}')),
                     ),
                     SizedBox(
-                      child: Center(child: Text('category page ${_categoryTabController.index}')),
+                      child: Center(
+                          child: Text(
+                              'category page ${_categoryTabController.index}')),
                     ),
                     SizedBox(
-                      child: Center(child: Text('category page ${_categoryTabController.index}')),
+                      child: Center(
+                          child: Text(
+                              'category page ${_categoryTabController.index}')),
                     ),
                     SizedBox(
-                      child: Center(child: Text('category page ${_categoryTabController.index}')),
+                      child: Center(
+                          child: Text(
+                              'category page ${_categoryTabController.index}')),
                     ),
                     SizedBox(
-                      child: Center(child: Text('category page ${_categoryTabController.index}')),
+                      child: Center(
+                          child: Text(
+                              'category page ${_categoryTabController.index}')),
                     ),
                   ],
                 ),
