@@ -1,5 +1,5 @@
-name: readky
-description: A new Flutter project.
+name: digital_omamori
+description: An SBI app focused on delivering security-related news updates.
 
 flutter_icons:
   android: true

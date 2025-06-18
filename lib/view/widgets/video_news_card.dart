@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:readky/model/core/video_news.dart';
-import 'package:readky/view/utils/app_theme.dart';
-import 'package:readky/view/widgets/tag_card.dart';
+import 'package:digital_omamori/model/core/video_news.dart';
+import 'package:digital_omamori/view/utils/app_theme.dart';
+import 'package:digital_omamori/view/widgets/tag_card.dart';
 
 class VideoNewsCard extends StatelessWidget {
   static final double itemHeight = 400;

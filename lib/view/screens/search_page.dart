@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:readky/model/core/category.dart';
-import 'package:readky/model/core/news.dart';
-import 'package:readky/model/helper/category_helper.dart';
-import 'package:readky/model/helper/news_helper.dart';
-import 'package:readky/view/widgets/news_tile.dart';
-import 'package:readky/view/widgets/search_app_bar.dart';
+import 'package:digital_omamori/model/core/category.dart';
+import 'package:digital_omamori/model/core/news.dart';
+import 'package:digital_omamori/model/helper/category_helper.dart';
+import 'package:digital_omamori/model/helper/news_helper.dart';
+import 'package:digital_omamori/view/widgets/news_tile.dart';
+import 'package:digital_omamori/view/widgets/search_app_bar.dart';
 
 class SearchPage extends StatefulWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:readky/model/core/news.dart';
-import 'package:readky/route/slide_page_route.dart';
-import 'package:readky/view/screens/news_detail_page.dart';
+import 'package:digital_omamori/model/core/news.dart';
+import 'package:digital_omamori/route/slide_page_route.dart';
+import 'package:digital_omamori/view/screens/news_detail_page.dart';
 
 class BreakingNewsCard extends StatelessWidget {
   final News data;

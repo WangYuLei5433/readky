@@ -1,4 +1,4 @@
-import 'package:readky/model/core/news.dart';
+import 'package:digital_omamori/model/core/news.dart';
 
 class NewsHelper {
   static List<News> featuredNews =

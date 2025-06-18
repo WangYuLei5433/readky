@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:readky/model/core/video_news.dart';
-import 'package:readky/view/widgets/custom_app_bar.dart';
+import 'package:digital_omamori/model/core/video_news.dart';
+import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoNewsDetailPage extends StatefulWidget {

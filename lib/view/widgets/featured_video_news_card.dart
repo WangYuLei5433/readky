@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:readky/model/core/video_news.dart';
-import 'package:readky/route/slide_page_route.dart';
-import 'package:readky/view/screens/video_news_page.dart';
-import 'package:readky/view/utils/app_theme.dart';
-import 'package:readky/view/widgets/tag_card.dart';
+import 'package:digital_omamori/model/core/video_news.dart';
+import 'package:digital_omamori/route/slide_page_route.dart';
+import 'package:digital_omamori/view/screens/video_news_page.dart';
+import 'package:digital_omamori/view/utils/app_theme.dart';
+import 'package:digital_omamori/view/widgets/tag_card.dart';
 
 class FeaturedVideoNewsCard extends StatelessWidget {
   final VideoNews data;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:readky/model/core/news.dart';
-import 'package:readky/model/helper/news_helper.dart';
-import 'package:readky/view/widgets/custom_app_bar.dart';
-import 'package:readky/view/widgets/news_tile.dart';
+import 'package:digital_omamori/model/core/news.dart';
+import 'package:digital_omamori/model/helper/news_helper.dart';
+import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
+import 'package:digital_omamori/view/widgets/news_tile.dart';
 
 class BreakingNewsPage extends StatefulWidget {
   @override

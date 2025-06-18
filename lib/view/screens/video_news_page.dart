@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:readky/model/core/video_news.dart';
-import 'package:readky/model/helper/video_news_helper.dart';
-import 'package:readky/view/widgets/custom_app_bar.dart';
-import 'package:readky/view/widgets/video_news_card.dart';
-import 'package:readky/view/widgets/video_news_filter_sheet.dart';
+import 'package:digital_omamori/model/core/video_news.dart';
+import 'package:digital_omamori/model/helper/video_news_helper.dart';
+import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
+import 'package:digital_omamori/view/widgets/video_news_card.dart';
+import 'package:digital_omamori/view/widgets/video_news_filter_sheet.dart';
 
 class VideoNewsPage extends StatefulWidget {
   @override

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:readky/model/core/news.dart';
-import 'package:readky/model/core/video_news.dart';
-import 'package:readky/model/helper/news_helper.dart';
-import 'package:readky/model/helper/video_news_helper.dart';
-import 'package:readky/route/slide_page_route.dart';
-import 'package:readky/view/screens/search_page.dart';
-import 'package:readky/view/widgets/custom_app_bar.dart';
-import 'package:readky/view/widgets/news_tile.dart';
-import 'package:readky/view/widgets/video_news_card.dart';
+import 'package:digital_omamori/model/core/news.dart';
+import 'package:digital_omamori/model/core/video_news.dart';
+import 'package:digital_omamori/model/helper/news_helper.dart';
+import 'package:digital_omamori/model/helper/video_news_helper.dart';
+import 'package:digital_omamori/route/slide_page_route.dart';
+import 'package:digital_omamori/view/screens/search_page.dart';
+import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
+import 'package:digital_omamori/view/widgets/news_tile.dart';
+import 'package:digital_omamori/view/widgets/video_news_card.dart';
 
 class BookmarkPage extends StatefulWidget {
   @override

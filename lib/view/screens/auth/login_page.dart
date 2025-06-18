@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:readky/route/slide_page_route.dart';
-import 'package:readky/view/screens/page_switch.dart';
-import 'package:readky/view/widgets/custom_text_field.dart';
+import 'package:digital_omamori/route/slide_page_route.dart';
+import 'package:digital_omamori/view/screens/page_switch.dart';
+import 'package:digital_omamori/view/widgets/custom_text_field.dart';
 
 class LoginPage extends StatefulWidget {
   @override

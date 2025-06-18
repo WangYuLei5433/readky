@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:readky/view/widgets/custom_app_bar.dart';
-import 'package:readky/view/widgets/profile_info_card.dart';
+import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
+import 'package:digital_omamori/view/widgets/profile_info_card.dart';
 
 class ProfilePage extends StatelessWidget {
   @override

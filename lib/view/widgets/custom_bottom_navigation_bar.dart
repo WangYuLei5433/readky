@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:readky/view/utils/app_theme.dart';
+import 'package:digital_omamori/view/utils/app_theme.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   final int selectedIndex;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:readky/model/core/news.dart';
-import 'package:readky/view/widgets/custom_app_bar.dart';
+import 'package:digital_omamori/model/core/news.dart';
+import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
 
 class NewsDetailPage extends StatelessWidget {
   final News data;

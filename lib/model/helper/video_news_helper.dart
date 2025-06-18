@@ -1,4 +1,4 @@
-import 'package:readky/model/core/video_news.dart';
+import 'package:digital_omamori/model/core/video_news.dart';
 
 class VideoNewsHelper {
   static List<VideoNews> featuredVideoNews = featredVideoNewsRawData

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:readky/route/slide_page_route.dart';
-import 'package:readky/view/screens/auth/login_page.dart';
-import 'package:readky/view/screens/auth/register_page.dart';
-import 'package:readky/view/widgets/switchable_button.dart';
+import 'package:digital_omamori/route/slide_page_route.dart';
+import 'package:digital_omamori/view/screens/auth/login_page.dart';
+import 'package:digital_omamori/view/screens/auth/register_page.dart';
+import 'package:digital_omamori/view/widgets/switchable_button.dart';
 
 class WelcomePage extends StatefulWidget {
   @override

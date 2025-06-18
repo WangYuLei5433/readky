@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:readky/view/screens/auth/login_page.dart';
-import 'package:readky/view/screens/home_page.dart';
-import 'package:readky/view/screens/welcome_page.dart';
+import 'package:digital_omamori/view/screens/auth/login_page.dart';
+import 'package:digital_omamori/view/screens/home_page.dart';
+import 'package:digital_omamori/view/screens/welcome_page.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
