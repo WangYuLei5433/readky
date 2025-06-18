@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         onPressedLeading: () {
           Scaffold.of(context).openDrawer();
         },
-        title: SvgPicture.asset('assets/icons/digital-omamori.svg',width: 145),
+        title: SvgPicture.asset('assets/icons/DigitalOmamori.svg',width: 140),
       ),
         
       body: ListView(

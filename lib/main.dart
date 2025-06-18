@@ -1,3 +1,4 @@
+import 'package:digital_omamori/view/screens/page_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:digital_omamori/view/screens/auth/login_page.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'open sans',
       ),
-      home: LoginPage(),
+      home: PageSwitch(),
     );
   }
 }

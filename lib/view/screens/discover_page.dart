@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:digital_omamori/model/core/news.dart';
-import 'package:digital_omamori/model/core/video_news.dart';
 import 'package:digital_omamori/model/helper/news_helper.dart';
-import 'package:digital_omamori/model/helper/video_news_helper.dart';
 import 'package:digital_omamori/route/slide_page_route.dart';
 import 'package:digital_omamori/view/screens/search_page.dart';
 import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
-import 'package:digital_omamori/view/widgets/featured_video_news_card.dart';
 import 'package:digital_omamori/view/widgets/news_tile.dart';
-import 'package:scroll_indicator/scroll_indicator.dart';
 
 class DiscoverPage extends StatefulWidget {
   @override
@@ -18,9 +14,7 @@ class DiscoverPage extends StatefulWidget {
 
 class _DiscoverPageState extends State<DiscoverPage>
     with TickerProviderStateMixin {
-  ScrollController _featuredVideoNewsCardScrollController = ScrollController();
   late TabController _categoryTabController;
-  List<VideoNews> featuredVideoNews = VideoNewsHelper.featuredVideoNews;
   List<News> allCategoriesNews = NewsHelper.allCategoriesNews;
 
   @override
@@ -37,8 +31,8 @@ class _DiscoverPageState extends State<DiscoverPage>
 
   @override
   void dispose() {
-    super.dispose();
     _categoryTabController.dispose();
+    super.dispose();
   }
 
   @override
@@ -55,13 +49,17 @@ class _DiscoverPageState extends State<DiscoverPage>
         title: Text(
           'Discover',
           style: TextStyle(
-              fontWeight: FontWeight.w400, fontSize: 16, color: Colors.white),
+              fontWeight: FontWeight.w400, fontSize: 20, color: Colors.white),
         ),
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(SlidePageRoute(
-                  child: SearchPage(), direction: AxisDirection.up));
+              Navigator.of(context).push(
+                SlidePageRoute(
+                  child: SearchPage(),
+                  direction: AxisDirection.up,
+                ),
+              );
             },
             icon: SvgPicture.asset(
               'assets/icons/Search.svg',
@@ -74,74 +72,11 @@ class _DiscoverPageState extends State<DiscoverPage>
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         children: [
-          // Section 1 - Featured News Video
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 16),
-            width: MediaQuery.of(context).size.width,
-            height: 245,
-            color: Colors.black,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(bottom: 20),
-                  height: 170,
-                  child: ListView.separated(
-                    controller: _featuredVideoNewsCardScrollController,
-                    padding: EdgeInsets.only(left: 16),
-                    scrollDirection: Axis.horizontal,
-                    physics: BouncingScrollPhysics(),
-                    itemCount: featuredVideoNews.length,
-                    separatorBuilder: (context, index) {
-                      return SizedBox(
-                        width: 10,
-                      );
-                    },
-                    itemBuilder: (context, index) {
-                      return FeaturedVideoNewsCard(
-                        data: featuredVideoNews[index],
-                      );
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Video News',
-                        style: TextStyle(
-                          color: Colors.white.withValues(alpha: (0.6)),
-                        ),
-                      ),
-                      ScrollIndicator(
-                        scrollController:
-                            _featuredVideoNewsCardScrollController,
-                        height: 6,
-                        width: 30,
-                        indicatorWidth: 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white.withValues(alpha: (0.3))),
-                        indicatorDecoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: (0.2)),
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-
-          // Section 2 - News Based on Category
+          // Section - News Based on Category
           Container(
             padding: EdgeInsets.symmetric(vertical: 8),
             width: MediaQuery.of(context).size.width,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
@@ -158,31 +93,18 @@ class _DiscoverPageState extends State<DiscoverPage>
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                         fontFamily: 'inter'),
-                    unselectedLabelColor: Colors.black.withValues(alpha: (0.6)),
+                    unselectedLabelColor:
+                        Colors.black.withOpacity(0.6),
                     indicatorColor: Colors.transparent,
                     onTap: _changeTab,
-                    tabs: [
-                      Tab(
-                        text: 'All categories',
-                      ),
-                      Tab(
-                        text: 'Covid19',
-                      ),
-                      Tab(
-                        text: 'International',
-                      ),
-                      Tab(
-                        text: 'Europe',
-                      ),
-                      Tab(
-                        text: 'American',
-                      ),
-                      Tab(
-                        text: 'Asian',
-                      ),
-                      Tab(
-                        text: 'Sports',
-                      ),
+                    tabs: const [
+                      Tab(text: 'All categories'),
+                      Tab(text: 'セキュリティニュース'),
+                      Tab(text: '企業のセキュリティ対策'),
+                      Tab(text: 'ソフトウェア脆弱性情報'),
+                      Tab(text: 'American'),
+                      Tab(text: 'Asian'),
+                      Tab(text: 'Sports'),
                     ],
                   ),
                 ),
@@ -197,49 +119,24 @@ class _DiscoverPageState extends State<DiscoverPage>
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: allCategoriesNews.length,
-                        separatorBuilder: (context, index) {
-                          return SizedBox(height: 16);
-                        },
+                        separatorBuilder: (context, index) =>
+                            SizedBox(height: 16),
                         itemBuilder: (context, index) {
                           return NewsTile(data: allCategoriesNews[index]);
                         },
                       ),
                     ),
-                    SizedBox(
-                      child: Center(
-                          child: Text(
-                              'category page ${_categoryTabController.index}')),
-                    ),
-                    SizedBox(
-                      child: Center(
-                          child: Text(
-                              'category page ${_categoryTabController.index}')),
-                    ),
-                    SizedBox(
-                      child: Center(
-                          child: Text(
-                              'category page ${_categoryTabController.index}')),
-                    ),
-                    SizedBox(
-                      child: Center(
-                          child: Text(
-                              'category page ${_categoryTabController.index}')),
-                    ),
-                    SizedBox(
-                      child: Center(
-                          child: Text(
-                              'category page ${_categoryTabController.index}')),
-                    ),
-                    SizedBox(
-                      child: Center(
-                          child: Text(
-                              'category page ${_categoryTabController.index}')),
-                    ),
+                    for (int i = 1; i < 7; i++)
+                      SizedBox(
+                        child: Center(
+                          child: Text('category page $i'),
+                        ),
+                      ),
                   ],
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
