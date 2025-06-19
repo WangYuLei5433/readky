@@ -15,18 +15,9 @@ class BookmarkPage extends StatefulWidget {
   _BookmarkPageState createState() => _BookmarkPageState();
 }
 
-class _BookmarkPageState extends State<BookmarkPage> with TickerProviderStateMixin {
-  late TabController _bookmarkTabController;
+class _BookmarkPageState extends State<BookmarkPage> {
   List<News> news = NewsHelper.bookmarkedNews;
-
   List<VideoNews> videoNews = VideoNewsHelper.bookmarkedVideoNews;
-
-  List<VideoNews> featuredVideoNews = VideoNewsHelper.featuredVideoNews;
-  @override
-  void initState() {
-    super.initState();
-    _bookmarkTabController = TabController(length: 2, vsync: this);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +34,17 @@ class _BookmarkPageState extends State<BookmarkPage> with TickerProviderStateMix
           'Bookmarks',
           style: TextStyle(
             fontWeight: FontWeight.w400,
-            fontSize: 16,
+            fontSize: 20,
+            color: Colors.white,
           ),
         ),
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(SlidePageRoute(child: SearchPage(), direction: AxisDirection.up));
+              Navigator.of(context).push(
+                SlidePageRoute(
+                  child: SearchPage(), direction: AxisDirection.up),
+              );
             },
             icon: SvgPicture.asset(
               'assets/icons/Search.svg',
@@ -60,71 +55,43 @@ class _BookmarkPageState extends State<BookmarkPage> with TickerProviderStateMix
       ),
       body: ListView(
         physics: BouncingScrollPhysics(),
-        shrinkWrap: true,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TabBar(
-                controller: _bookmarkTabController,
-                labelColor: Colors.black,
-                indicatorColor: Colors.black,
-                labelStyle: TextStyle(fontSize: 16),
-                unselectedLabelStyle: TextStyle(fontSize: 16),
-                labelPadding: EdgeInsets.symmetric(vertical: 8),
-                indicatorWeight: 1.5,
-                onTap: (index) {
-                  setState(() {
-                    _bookmarkTabController.index = index;
-                  });
-                },
-                tabs: [
-                  Tab(
-                    text: 'News',
-                  ),
-                  Tab(
-                    text: 'Video',
-                  ),
-                ],
+          Padding(
+            padding: EdgeInsets.only(left: 16, top: 17, bottom: 5),
+            child: Text(
+              'Saved News',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'inter',
               ),
-              IndexedStack(
-                index: _bookmarkTabController.index,
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    width: MediaQuery.of(context).size.width,
-                    child: ListView.separated(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      scrollDirection: Axis.vertical,
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: news.length,
-                      separatorBuilder: (context, index) {
-                        return SizedBox(height: 16);
-                      },
-                      itemBuilder: (context, index) {
-                        return NewsTile(data: news[index]);
-                      },
-                    ),
-                  ),
-                  GridView.count(
-                    crossAxisCount: 2,
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                    childAspectRatio: VideoNewsCard.itemWidth / VideoNewsCard.itemHeight,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 10,
-                    children: List.generate(videoNews.length, (index) {
-                      return VideoNewsCard(
-                        data: videoNews[index],
-                      );
-                    }),
-                  ),
-                ],
-              )
-            ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 16, right: 16,  bottom: 6,),
+            child: Text(
+              '${news.length} saved items',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey.shade600,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 8),
+            child: ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              scrollDirection: Axis.vertical,
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: news.length,
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 16);
+              },
+              itemBuilder: (context, index) {
+                return NewsTile(data: news[index]);
+              },
+            ),
           ),
         ],
       ),

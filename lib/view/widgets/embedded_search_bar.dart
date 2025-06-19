@@ -35,7 +35,7 @@ class _EmbeddedSearchBarState extends State<EmbeddedSearchBar> {
         ),
       ),
       child: Container(
-        margin: EdgeInsets.all(16),
+        margin: EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 4),
         height: 48,
         decoration: BoxDecoration(
           color: backgroundColor,
