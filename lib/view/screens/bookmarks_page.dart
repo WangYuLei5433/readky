@@ -4,11 +4,8 @@ import 'package:digital_omamori/model/core/news.dart';
 import 'package:digital_omamori/model/core/video_news.dart';
 import 'package:digital_omamori/model/helper/news_helper.dart';
 import 'package:digital_omamori/model/helper/video_news_helper.dart';
-import 'package:digital_omamori/route/slide_page_route.dart';
-import 'package:digital_omamori/view/screens/search_page.dart';
 import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
 import 'package:digital_omamori/view/widgets/news_tile.dart';
-import 'package:digital_omamori/view/widgets/video_news_card.dart';
 
 class BookmarkPage extends StatefulWidget {
   @override
@@ -38,20 +35,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
             color: Colors.white,
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                SlidePageRoute(
-                  child: SearchPage(), direction: AxisDirection.up),
-              );
-            },
-            icon: SvgPicture.asset(
-              'assets/icons/Search.svg',
-              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
-            ),
-          ),
-        ],
+        
       ),
       body: ListView(
         physics: BouncingScrollPhysics(),
@@ -68,7 +52,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 16, right: 16,  bottom: 6,),
+            padding: EdgeInsets.only(left: 16, right: 16, bottom: 6),
             child: Text(
               '${news.length} saved items',
               style: TextStyle(
