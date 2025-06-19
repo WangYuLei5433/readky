@@ -23,10 +23,11 @@ class _BreakingNewsPageState extends State<BreakingNewsPage> {
           Navigator.of(context).pop();
         },
         title: Text(
-          'Breaking News',
+          'Recent News',
           style: TextStyle(
             fontWeight: FontWeight.w400,
-            fontSize: 16,
+            fontSize: 20,
+            color: Colors.white,
           ),
         ),
       ),
