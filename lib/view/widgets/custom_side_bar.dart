@@ -1,6 +1,11 @@
+import 'package:digital_omamori/view/screens/about_us_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:digital_omamori/view/utils/email_helper.dart';
+import 'package:digital_omamori/view/utils/share_plus.dart';
+import 'package:digital_omamori/route/slide_page_route.dart';
+
 
 class CustomSideBar extends StatefulWidget {
   @override
@@ -103,19 +108,28 @@ class _CustomSideBarState extends State<CustomSideBar> {
                     context,
                     iconAssetPath: 'assets/icons/mail.svg',
                     title: 'Contact Support',
-                    onTap: () {},
+                    onTap: () {
+                      launchSupportEmail(context);
+                    },
                   ),
                   _buildMenuItem(
                     context,
                     iconAssetPath: 'assets/icons/share.svg',
                     title: 'Share App',
-                    onTap: () {},
+                    onTap: () {
+                      shareApp();
+                    },
                   ),
                   _buildMenuItem(
                     context,
                     iconAssetPath: 'assets/icons/info.svg',
                     title: 'About Us',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pop(); // 先关闭侧边栏
+                      Navigator.of(context).push(
+                        SlidePageRoute(child: AboutUsPage()), // 使用SlidePageRoute
+                      );
+                    },
                   ),
                   _buildMenuItem(
                     context,
@@ -131,7 +145,7 @@ class _CustomSideBarState extends State<CustomSideBar> {
             Padding(
               padding: EdgeInsets.all(24),
               child: Text(
-                '© 2023 Digital Omamori',
+                '© 2025 SBI EVERSPIN',
                 style: TextStyle(
                   color: Colors.white.withOpacity(0.6),
                   fontSize: 12,

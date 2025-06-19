@@ -4,7 +4,6 @@ import 'package:digital_omamori/model/core/news.dart';
 import 'package:digital_omamori/model/helper/news_helper.dart';
 import 'package:digital_omamori/route/slide_page_route.dart';
 import 'package:digital_omamori/view/screens/breaking_news_page.dart';
-import 'package:digital_omamori/view/screens/profile_page.dart';
 import 'package:digital_omamori/view/widgets/breaking_news_card.dart';
 import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
 import 'package:digital_omamori/view/widgets/news_tile.dart';
