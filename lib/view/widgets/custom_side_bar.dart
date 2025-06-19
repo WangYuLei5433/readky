@@ -7,7 +7,6 @@ import 'package:digital_omamori/view/utils/email_helper.dart';
 import 'package:digital_omamori/view/utils/share_plus.dart';
 import 'package:digital_omamori/route/slide_page_route.dart';
 
-
 class CustomSideBar extends StatefulWidget {
   @override
   _CustomSideBarState createState() => _CustomSideBarState();
@@ -118,7 +117,7 @@ class _CustomSideBarState extends State<CustomSideBar> {
                     iconAssetPath: 'assets/icons/share.svg',
                     title: 'Share App',
                     onTap: () {
-                      shareApp();
+                      shareApp(context);
                     },
                   ),
                   _buildMenuItem(
@@ -128,7 +127,8 @@ class _CustomSideBarState extends State<CustomSideBar> {
                     onTap: () {
                       Navigator.of(context).pop(); // 先关闭侧边栏
                       Navigator.of(context).push(
-                        SlidePageRoute(child: AboutUsPage()), // 使用SlidePageRoute
+                        SlidePageRoute(
+                            child: AboutUsPage()), // 使用SlidePageRoute
                       );
                     },
                   ),
@@ -139,7 +139,8 @@ class _CustomSideBarState extends State<CustomSideBar> {
                     onTap: () {
                       Navigator.of(context).pop(); // 先关闭侧边栏
                       Navigator.of(context).push(
-                        SlidePageRoute(child: PrivacyPolicyPage()), // 使用SlidePageRoute
+                        SlidePageRoute(
+                            child: PrivacyPolicyPage()), // 使用SlidePageRoute
                       );
                     },
                   ),
@@ -164,7 +165,8 @@ class _CustomSideBarState extends State<CustomSideBar> {
     );
   }
 
-  Widget _buildMenuItem(BuildContext context, {
+  Widget _buildMenuItem(
+    BuildContext context, {
     required String title,
     required String iconAssetPath,
     required VoidCallback onTap,
