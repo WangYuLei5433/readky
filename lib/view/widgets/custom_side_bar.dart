@@ -1,4 +1,5 @@
 import 'package:digital_omamori/view/screens/about_us_page.dart';
+import 'package:digital_omamori/view/screens/privacy_policy_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -135,7 +136,12 @@ class _CustomSideBarState extends State<CustomSideBar> {
                     context,
                     iconAssetPath: 'assets/icons/lock-keyhole.svg',
                     title: 'Privacy Policy',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pop(); // 先关闭侧边栏
+                      Navigator.of(context).push(
+                        SlidePageRoute(child: PrivacyPolicyPage()), // 使用SlidePageRoute
+                      );
+                    },
                   ),
                 ],
               ),
