@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:digital_omamori/model/core/news.dart';
 import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
 
@@ -23,13 +24,12 @@ class NewsDetailPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.share_outlined, color: Colors.white.withOpacity(0.5)),
-          ),
-          IconButton(
-            onPressed: () {},
             icon: SvgPicture.asset(
               'assets/icons/Bookmark.svg',
-              colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.5), BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(
+                Colors.white.withOpacity(0.5),
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ],
@@ -37,8 +37,7 @@ class NewsDetailPage extends StatelessWidget {
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
-          // 头部大图：保持原样（不圆角）
-          if (data.photo != null && data.photo!.isNotEmpty)
+          if (data.photo?.isNotEmpty ?? false)
             Container(
               width: screenWidth,
               height: 240,
@@ -57,19 +56,36 @@ class NewsDetailPage extends StatelessWidget {
               children: [
                 Text(
                   '${data.date} | ${data.author}',
-                  style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 12),
+                  style: TextStyle(
+                      color: Colors.black.withOpacity(0.6), fontSize: 12),
                 ),
                 SizedBox(height: 12),
                 Text(
                   data.title ?? '',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, height: 1.5),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(height: 20),
                 Html(
                   data: data.description ?? '',
                   style: {
-                    'body': Style(fontSize: FontSize(14), lineHeight: LineHeight(1.5), color: Colors.black87),
-                    'a': Style(color: Colors.blue, textDecoration: TextDecoration.underline),
+                    'body': Style(
+                        fontSize: FontSize(14),
+                        lineHeight: LineHeight(1.5),
+                        color: Colors.black87),
+                    'a': Style(
+                        color: Colors.blue,
+                        textDecoration: TextDecoration.underline),
+                  },
+                  // 点击链接即可跳转
+                  onLinkTap: (String? url, _, __) async {
+                    if (url == null) return;
+                    final uri = Uri.tryParse(url);
+                    if (uri != null && await canLaunchUrl(uri)) {
+                      await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      );
+                    }
                   },
                   extensions: [
                     TagExtension(
@@ -78,14 +94,11 @@ class NewsDetailPage extends StatelessWidget {
                         final src = context.element?.attributes['src'] ?? '';
                         if (src.isEmpty) return SizedBox.shrink();
                         return Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10),
+                          padding: EdgeInsets.only(bottom: 10),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
-                            child: Image.network(
-                              src,
-                              width: screenWidth - 32,
-                              fit: BoxFit.cover,
-                            ),
+                            child: Image.network(src,
+                                width: screenWidth - 32, fit: BoxFit.cover),
                           ),
                         );
                       },
