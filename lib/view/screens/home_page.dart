@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:digital_omamori/model/core/news.dart';
-import 'package:digital_omamori/model/helper/news_helper.dart';
+import 'package:digital_omamori/model/helper/api_service.dart';
+import 'package:digital_omamori/view/widgets/breaking_news_card.dart';
+import 'package:digital_omamori/view/widgets/news_tile.dart';
 import 'package:digital_omamori/route/slide_page_route.dart';
 import 'package:digital_omamori/view/screens/breaking_news_page.dart';
-import 'package:digital_omamori/view/widgets/breaking_news_card.dart';
 import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
-import 'package:digital_omamori/view/widgets/news_tile.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,8 +14,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<News> breakingNewsData = NewsHelper.breakingNews;
-  List<News> recomendationNewsData = NewsHelper.recomendationNews;
+  late Future<List<News>> _latestNewsFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _latestNewsFuture = ApiService().fetchLatestNews();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,22 +34,29 @@ class _HomePageState extends State<HomePage> {
         onPressedLeading: () {
           Scaffold.of(context).openDrawer();
         },
-        title: SvgPicture.asset('assets/icons/DigitalOmamori.svg',width: 140),
+        title: SvgPicture.asset('assets/icons/DigitalOmamori.svg', width: 140),
       ),
-        
-      body: ListView(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        children: [
-          // section 1 - Breaking News
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 16),
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: FutureBuilder<List<News>>(
+        future: _latestNewsFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('エラー: ${snapshot.error}'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return Center(child: Text('ニュースが見つかりません'));
+          } else {
+            final allNews = snapshot.data!;
+            final breakingNewsData = allNews.length >= 2 ? allNews.sublist(0, 2) : allNews;
+            final recommendationNewsData = allNews.length > 2 ? allNews.sublist(2) : [];
+
+            return ListView(
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
               children: [
+                // 🔴 Breaking News Section
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: Text(
                     'Breaking News',
                     style: TextStyle(
@@ -56,31 +68,21 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Container(
                   height: 200,
-                  margin: EdgeInsets.only(top: 6),
+                  margin: EdgeInsets.only(bottom: 16),
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     itemCount: breakingNewsData.length,
-                    physics: BouncingScrollPhysics(),
                     separatorBuilder: (context, index) => SizedBox(width: 13),
                     itemBuilder: (context, index) {
                       return BreakingNewsCard(data: breakingNewsData[index]);
                     },
                   ),
                 ),
-              ],
-            ),
-          ),
 
-          // section 2 - Recent News
-          Container(
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+                // 🔵 Recent News Section
                 Padding(
-                  padding: EdgeInsets.only(top: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -100,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                         },
                         style: ButtonStyle(
                           overlayColor: WidgetStateProperty.all(
-                            Colors.grey.withValues(alpha: (0.1 * 255))
+                            Colors.grey.withOpacity(0.1),
                           ),
                           padding: WidgetStateProperty.all(
                             EdgeInsets.symmetric(horizontal: 14, vertical: 6),
@@ -124,22 +126,20 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 16, bottom: 16),
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: recomendationNewsData.length,
-                    separatorBuilder: (context, index) => SizedBox(height: 16),
-                    itemBuilder: (context, index) {
-                      return NewsTile(data: recomendationNewsData[index]);
-                    },
-                  ),
+                ListView.separated(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  itemCount: recommendationNewsData.length,
+                  separatorBuilder: (context, index) => SizedBox(height: 16),
+                  itemBuilder: (context, index) {
+                    return NewsTile(data: recommendationNewsData[index]);
+                  },
                 ),
               ],
-            ),
-          ),
-        ],
+            );
+          }
+        },
       ),
     );
   }
