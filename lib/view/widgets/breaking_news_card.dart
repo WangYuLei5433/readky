@@ -2,26 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:digital_omamori/model/core/news.dart';
 import 'package:digital_omamori/route/slide_page_route.dart';
 import 'package:digital_omamori/view/screens/news_detail_page.dart';
+import 'package:digital_omamori/view/widgets/safe_network_image.dart'; // ✅ 记得导入图片组件
 
 class BreakingNewsCard extends StatelessWidget {
   final News data;
   BreakingNewsCard({required this.data});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(SlidePageRoute(child: NewsDetailPage(data: data)));
+        Navigator.of(context).push(
+          SlidePageRoute(child: NewsDetailPage(data: data)),
+        );
       },
       child: Container(
         width: 200,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 120,
+            SafeNetworkImage(
+              url: data.photo ?? '',
               width: 200,
-              decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10), image: DecorationImage(image: AssetImage(data.photo ?? ' '), fit: BoxFit.cover)),
+              height: 120,
+              borderRadius: 10,
             ),
             Expanded(
               child: Container(
@@ -31,9 +35,11 @@ class BreakingNewsCard extends StatelessWidget {
                   data.title ?? '',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    height: 150 / 100,
+                    height: 1.5,
                     fontFamily: 'inter',
                   ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),

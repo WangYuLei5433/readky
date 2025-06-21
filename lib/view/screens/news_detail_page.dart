@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import 'package:digital_omamori/model/core/news.dart';
 import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
+import 'package:digital_omamori/view/widgets/safe_network_image.dart'; // ✅ 新增引入
 
 class NewsDetailPage extends StatelessWidget {
   final News data;
@@ -41,23 +43,24 @@ class NewsDetailPage extends StatelessWidget {
             Container(
               width: screenWidth,
               height: 240,
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                image: DecorationImage(
-                  image: NetworkImage(data.photo!),
-                  fit: BoxFit.cover,
-                ),
+              color: Color(0xFF7DC6EA),
+              child: SafeNetworkImage(
+                url: data.photo!,
+                width: screenWidth,
+                height: 240,
               ),
             ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   '${data.date} | ${data.author}',
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.6), fontSize: 12),
+                    color: Colors.black.withOpacity(0.6),
+                    fontSize: 12,
+                  ),
                 ),
                 SizedBox(height: 12),
                 Text(
@@ -69,22 +72,21 @@ class NewsDetailPage extends StatelessWidget {
                   data: data.description ?? '',
                   style: {
                     'body': Style(
-                        fontSize: FontSize(14),
-                        lineHeight: LineHeight(1.5),
-                        color: Colors.black87),
+                      fontSize: FontSize(14),
+                      lineHeight: LineHeight(1.5),
+                      color: Colors.black87,
+                    ),
                     'a': Style(
-                        color: Colors.blue,
-                        textDecoration: TextDecoration.underline),
+                      color: Colors.blue,
+                      textDecoration: TextDecoration.underline,
+                    ),
                   },
-                  // 点击链接即可跳转
                   onLinkTap: (String? url, _, __) async {
                     if (url == null) return;
                     final uri = Uri.tryParse(url);
                     if (uri != null && await canLaunchUrl(uri)) {
-                      await launchUrl(
-                        uri,
-                        mode: LaunchMode.externalApplication,
-                      );
+                      await launchUrl(uri,
+                          mode: LaunchMode.externalApplication);
                     }
                   },
                   extensions: [
@@ -95,10 +97,12 @@ class NewsDetailPage extends StatelessWidget {
                         if (src.isEmpty) return SizedBox.shrink();
                         return Padding(
                           padding: EdgeInsets.only(bottom: 10),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.network(src,
-                                width: screenWidth - 32, fit: BoxFit.cover),
+                          child: SafeNetworkImage(
+                            url: src,
+                            width: screenWidth - 32,
+                            height: 180,
+                            borderRadius: 12,
+                            fallbackAsset: 'assets/icons/news-logo.png',
                           ),
                         );
                       },
