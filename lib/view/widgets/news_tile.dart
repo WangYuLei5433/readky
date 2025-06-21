@@ -5,6 +5,15 @@ import 'package:digital_omamori/view/screens/news_detail_page.dart';
 import 'package:digital_omamori/view/widgets/safe_network_image.dart'; // ✅ 引入图片组件
 
 class NewsTile extends StatelessWidget {
+  //标签过滤器
+  String stripHtmlPreview(String? htmlText, {int maxLength = 80}) {
+    if (htmlText == null) return '';
+    final stripped = htmlText.replaceAll(RegExp(r'<[^>]*>'), '');
+    return stripped.length <= maxLength
+        ? stripped
+        : '${stripped.substring(0, maxLength)}...';
+  }
+
   final News data;
   NewsTile({required this.data});
 
@@ -52,7 +61,7 @@ class NewsTile extends StatelessWidget {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    data.description ?? '',
+                    stripHtmlPreview(data.description),
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 12,

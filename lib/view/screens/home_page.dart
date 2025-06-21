@@ -47,8 +47,10 @@ class _HomePageState extends State<HomePage> {
             return Center(child: Text('ニュースが見つかりません'));
           } else {
             final allNews = snapshot.data!;
-            final breakingNewsData = allNews.length >= 2 ? allNews.sublist(0, 2) : allNews;
-            final recommendationNewsData = allNews.length > 2 ? allNews.sublist(2) : [];
+            final breakingNewsData =
+                allNews.length >= 3 ? allNews.sublist(0, 3) : allNews;
+            final recommendationNewsData =
+                allNews.length > 3 ? allNews.sublist(3) : [];
 
             return ListView(
               shrinkWrap: true,

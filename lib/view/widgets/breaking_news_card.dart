@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:digital_omamori/model/core/news.dart';
 import 'package:digital_omamori/route/slide_page_route.dart';
 import 'package:digital_omamori/view/screens/news_detail_page.dart';
-import 'package:digital_omamori/view/widgets/safe_network_image.dart'; // ✅ 记得导入图片组件
+import 'package:digital_omamori/view/widgets/safe_network_image.dart';
 
 class BreakingNewsCard extends StatelessWidget {
   final News data;
