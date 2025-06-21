@@ -26,6 +26,7 @@ class PaginatedNews {
   }
 }
 
+//获取最新的新闻api
 class ApiService {
   static const String baseUrl = 'http://10.0.2.2:8080/public/php/mobile';
 
@@ -53,6 +54,7 @@ class ApiService {
     }
   }
 
+//获取分页新闻api
   Future<PaginatedNews> fetchNewsByPage({
     required int page,
     int limit = 10,
@@ -60,6 +62,36 @@ class ApiService {
     try {
       final url =
           Uri.parse('$baseUrl/fetch_news_by_page.php?page=$page&limit=$limit');
+      final response = await http.get(url);
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> jsonMap = json.decode(response.body);
+        final paginatedNews = PaginatedNews.fromJson(jsonMap);
+        final updatedList = _attachPhotoUrls(paginatedNews.data);
+
+        return PaginatedNews(
+          data: updatedList,
+          total: paginatedNews.total,
+          page: paginatedNews.page,
+          totalPages: paginatedNews.totalPages,
+        );
+      } else {
+        throw Exception('状态码错误: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('API 通信エラー: $e');
+    }
+  }
+
+//新闻搜索api
+  Future<PaginatedNews> searchNews({
+    required String keyword,
+    int page = 1,
+    int limit = 10,
+  }) async {
+    try {
+      final url = Uri.parse(
+        '$baseUrl/search_news.php?keyword=${Uri.encodeComponent(keyword)}&page=$page&limit=$limit',
+      );
       final response = await http.get(url);
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonMap = json.decode(response.body);

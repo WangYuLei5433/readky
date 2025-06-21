@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:digital_omamori/view/widgets/embedded_search_bar.dart';
 import 'package:digital_omamori/model/core/news.dart';
 import 'package:digital_omamori/model/helper/news_helper.dart';
+import 'package:digital_omamori/model/helper/api_service.dart';
 import 'package:digital_omamori/view/widgets/custom_app_bar.dart';
 import 'package:digital_omamori/view/widgets/news_tile.dart';
 
@@ -15,12 +16,14 @@ class _DiscoverPageState extends State<DiscoverPage>
     with TickerProviderStateMixin {
   late TabController _categoryTabController;
   List<News> allCategoriesNews = NewsHelper.allCategoriesNews;
+  List<News> searchResults = [];
   final TextEditingController searchInputController = TextEditingController();
+  bool isSearching = false;
 
   @override
   void initState() {
     super.initState();
-    _categoryTabController = TabController(length: 7, vsync: this);
+    _categoryTabController = TabController(length: 4, vsync: this); // 4 tabs
   }
 
   @override
@@ -30,10 +33,34 @@ class _DiscoverPageState extends State<DiscoverPage>
     super.dispose();
   }
 
-  _changeTab(index) {
+  void _changeTab(int index) {
     setState(() {
       _categoryTabController.index = index;
+      searchResults.clear(); // 切换 Tab 清空搜索结果
     });
+  }
+
+  Future<void> _performSearch() async {
+    final keyword = searchInputController.text.trim();
+    if (keyword.isEmpty) return;
+
+    setState(() {
+      isSearching = true;
+    });
+
+    try {
+      final paginated = await ApiService().searchNews(keyword: keyword);
+      setState(() {
+        searchResults = paginated.data;
+        _categoryTabController.index = 0;
+      });
+    } catch (e) {
+      print('搜索失败: $e');
+    } finally {
+      setState(() {
+        isSearching = false;
+      });
+    }
   }
 
   @override
@@ -52,23 +79,19 @@ class _DiscoverPageState extends State<DiscoverPage>
           style: TextStyle(
               fontWeight: FontWeight.w400, fontSize: 20, color: Colors.white),
         ),
-        actions: [], // 已移除右上角搜索图标
+        actions: [],
       ),
       body: ListView(
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         children: [
-          // 嵌入式搜索组件
+          // 嵌入式搜索栏
           EmbeddedSearchBar(
             controller: searchInputController,
-            onSearch: () {
-              // 你可以添加过滤搜索逻辑
-              print('搜索关键词: ${searchInputController.text}');
-              // 示例仅打印，不做过滤
-            },
+            onSearch: _performSearch,
           ),
 
-          // 新闻列表
+          // 标签栏 + 新闻内容
           Container(
             padding: EdgeInsets.symmetric(vertical: 8),
             width: MediaQuery.of(context).size.width,
@@ -102,11 +125,11 @@ class _DiscoverPageState extends State<DiscoverPage>
                   ),
                 ),
 
-                // 分类内容
+                // 标签内容或搜索结果
                 IndexedStack(
                   index: _categoryTabController.index,
                   children: [
-                    // 第一个标签：全部新闻
+                    // 第一个 Tab 页面：搜索结果 or 全部新闻
                     Container(
                       width: MediaQuery.of(context).size.width,
                       child: ListView.separated(
@@ -114,17 +137,22 @@ class _DiscoverPageState extends State<DiscoverPage>
                         scrollDirection: Axis.vertical,
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: allCategoriesNews.length,
+                        itemCount: searchResults.isNotEmpty
+                            ? searchResults.length
+                            : allCategoriesNews.length,
                         separatorBuilder: (context, index) =>
                             SizedBox(height: 16),
                         itemBuilder: (context, index) {
-                          return NewsTile(data: allCategoriesNews[index]);
+                          final data = searchResults.isNotEmpty
+                              ? searchResults[index]
+                              : allCategoriesNews[index];
+                          return NewsTile(data: data);
                         },
                       ),
                     ),
 
-                    // 其他标签页的占位符
-                    for (int i = 1; i < 7; i++)
+                    // 其他 3 个分类 Tab 页面
+                    for (int i = 1; i < 4; i++)
                       SizedBox(
                         child: Center(
                           child: Text('category page $i'),

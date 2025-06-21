@@ -16,13 +16,25 @@ class EmbeddedSearchBar extends StatefulWidget {
 }
 
 class _EmbeddedSearchBarState extends State<EmbeddedSearchBar> {
-  // 1760AD-inspired color palette
-  final Color primaryColor = const Color(0xFF1760AD); // 主色调
-  final Color accentColor = const Color.fromARGB(255, 53, 139, 192); // 辅助色
-  final Color textColor = const Color(0xFF002B5B); // 文字颜色
-  final Color hintColor = const Color(0xFF7A9CC6); // 提示文字颜色
-  final Color backgroundColor = const Color(0xFFF4F9F9); // 背景色
-  final Color borderColor = const Color(0xFFD1E0EB); // 边框颜色
+  final Color primaryColor = const Color(0xFF1760AD);
+  final Color accentColor = const Color.fromARGB(255, 53, 139, 192);
+  final Color textColor = const Color(0xFF002B5B);
+  final Color hintColor = const Color(0xFF7A9CC6);
+  final Color backgroundColor = const Color(0xFFF4F9F9);
+  final Color borderColor = const Color(0xFFD1E0EB);
+
+  bool isInputEmpty = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // 监听输入框文字变化
+    widget.controller.addListener(() {
+      setState(() {
+        isInputEmpty = widget.controller.text.trim().isEmpty;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +47,7 @@ class _EmbeddedSearchBarState extends State<EmbeddedSearchBar> {
         ),
       ),
       child: Container(
-        margin: EdgeInsets.only(left: 16, right: 16, top: 23, bottom: 4),
+        margin: const EdgeInsets.only(left: 16, right: 16, top: 23, bottom: 4),
         height: 48,
         decoration: BoxDecoration(
           color: backgroundColor,
@@ -48,7 +60,7 @@ class _EmbeddedSearchBarState extends State<EmbeddedSearchBar> {
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
               blurRadius: 8,
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
             ),
           ],
         ),
@@ -62,8 +74,10 @@ class _EmbeddedSearchBarState extends State<EmbeddedSearchBar> {
                   fontWeight: FontWeight.w500,
                   fontSize: 15,
                 ),
-                onChanged: (value) {
-                  setState(() {});
+                onSubmitted: (_) {
+                  if (!isInputEmpty) {
+                    widget.onSearch();
+                  }
                 },
                 maxLines: 1,
                 decoration: InputDecoration(
@@ -85,41 +99,40 @@ class _EmbeddedSearchBarState extends State<EmbeddedSearchBar> {
                       ),
                     ),
                   ),
-                  prefixIconConstraints: BoxConstraints(maxHeight: 20),
+                  prefixIconConstraints: const BoxConstraints(maxHeight: 20),
                   hintText: 'Search...',
                   hintStyle: TextStyle(
                     color: hintColor,
                     fontWeight: FontWeight.w400,
                   ),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 ),
               ),
             ),
-            // Search/Cancel button
             Container(
-              margin: EdgeInsets.only(right: 4),
+              margin: const EdgeInsets.only(right: 4),
               child: ElevatedButton(
-                onPressed: widget.controller.text.isEmpty
+                onPressed: isInputEmpty
                     ? () {
-                        // 空搜索时的处理
-                        FocusScope.of(context).unfocus();
+                        FocusScope.of(context).unfocus(); // 输入为空时收起键盘
                       }
                     : widget.onSearch,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   foregroundColor: Colors.white,
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  minimumSize: Size(0, 36),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  minimumSize: const Size(0, 36),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6),
                   ),
                   elevation: 0,
                 ),
-                child: Text('Search'),
+                child: const Text('Search'),
               ),
             ),
           ],
